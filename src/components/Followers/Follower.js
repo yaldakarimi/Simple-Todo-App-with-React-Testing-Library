@@ -1,19 +1,22 @@
 import React from "react";
 
-const Follower = ({ data: { name, picture, email } }) => {
+const Follower = ({ index, data }) => {
 	return (
-		<div className="bg-gray-50  w-full text-gray-800 mb-2 p-4 rounded-md shadow-sm">
+		<div
+			data-testid={`follower-${index}`}
+			className="bg-gray-50  w-full text-gray-800 mb-2 p-4 rounded-md shadow-sm"
+		>
 			<div className="flex">
 				<img
 					className="mr-4 rounded-full"
-					src={picture.thumbnail}
-					alt={name.first}
+					src={data.picture.thumbnail}
+					alt={data.name.first}
 				/>
 				<div>
 					<h4>
-						{name.first} {name.last}
+						{data.name.first} {data.name.last}
 					</h4>
-					<span className="text-blue-300">{email}</span>
+					<span className="text-blue-300">{data.email}</span>
 				</div>
 			</div>
 		</div>

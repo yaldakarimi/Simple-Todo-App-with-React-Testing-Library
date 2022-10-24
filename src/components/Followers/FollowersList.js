@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Follower from "./Follower";
+
+//note to remember: have the testid in the actual div and not in <Follower/> component. it would fail because there won't be an divs with that id
 
 const FollowersList = () => {
 	const [followers, setFollowers] = useState([]);
@@ -10,16 +11,19 @@ const FollowersList = () => {
 	}, []);
 
 	const fetchFollowers = async () => {
-		const { data } = await axios.get(
-			"https://randomuser.me/api/?results=5"
-		);
+		const response = await fetch("https://randomuser.me/api/?results=5");
+		const data = await response.json();
 		setFollowers(data.results);
 	};
 	return (
 		<div className="mb-8">
 			{!!followers?.length &&
-				followers.map((follower) => (
-					<Follower key={follower.id.value} data={follower} />
+				followers.map((follower, index) => (
+					<Follower
+						key={follower.id.value}
+						data={follower}
+						index={index}
+					/>
 				))}
 		</div>
 	);
