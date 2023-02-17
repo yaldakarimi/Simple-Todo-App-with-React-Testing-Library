@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Follower from "./Follower";
 
-//note to remember: have the testid in the actual div and not in <Follower/> component. it would fail because there won't be an divs with that id
+//note to remember: have the testid in the actual div and not in <Follower/> component. it would fail because there won't be an div with that id
 
 const FollowersList = () => {
 	const [followers, setFollowers] = useState([]);
